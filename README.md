@@ -14,8 +14,8 @@ $ [sudo] npm install -g quiver2html
 ## Usage
 
 ```bash
-quiver2html test.qvnotebook
-quiver2html test.qvnote
+quiver2html test.qvnotebook -o output_dir
+quiver2html test.qvnote -o output_dir
 ```
 
 ## License
