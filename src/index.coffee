@@ -6,11 +6,9 @@ opts = nomnom
 .script 'quiver2html'
 .option 'output',
   abbr: 'o'
-  full: 'output'
   help: 'Path to the output dir'
 .option 'version',
   abbr: 'v'
-  full: 'version'
   flag: true
   help: 'Print version and exit'
   callback: -> pkg.version
