@@ -4,6 +4,11 @@ exporter = require './exporter'
 
 opts = nomnom
 .script 'quiver2html'
+.option 'paths',
+  position: 0
+  list: true
+  required: true
+  help: 'Quiver notebook or note file(s)'
 .option 'output',
   abbr: 'o'
   help: 'Path to the output dir'
@@ -14,5 +19,5 @@ opts = nomnom
   callback: -> pkg.version
 .parse()
 
-for path in opts._
+for path in opts.paths
   exporter.exportAsHTML path, opts.output
