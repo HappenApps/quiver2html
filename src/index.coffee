@@ -11,7 +11,7 @@ opts = nomnom
   help: 'Quiver notebook or note file(s)'
 .option 'output',
   abbr: 'o'
-  help: 'Path to the output dir'
+  help: 'Path to the output directory'
 .option 'version',
   abbr: 'v'
   flag: true
