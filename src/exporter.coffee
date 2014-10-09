@@ -22,9 +22,11 @@ exportNoteAsHTML = (noteDir, outputDir) ->
         s += "<pre class='cell code-cell'><code>#{htmlEscape(c.data)}</code></pre>"
       when 'markdown'
         s += "<div class='cell markdown-cell'>#{marked(c.data)}</div>"
+      when 'latex'
+        s += "<div class='cell latex-cell'>#{c.data}</div>"
   html = HTML_TEMPLATE.replace('{{title}}', title).replace('{{content}}', s)
 
-  htmlDir = sysPath.join outputDir, meta.title
+  htmlDir = sysPath.join outputDir, meta.title.replace('/', ':')
   fs.mkdirSync htmlDir unless fs.existsSync(htmlDir)
   fs.writeFileSync sysPath.join(htmlDir, 'index.html'), html
 
@@ -40,7 +42,7 @@ exportAsHTML = (path, outputDir) ->
   switch sysPath.extname(dir)
     when '.qvnotebook'
       notebook = JSON.parse(fs.readFileSync(sysPath.join(dir, 'content.json')))
-      outputDir = sysPath.join outputDir, notebook.name
+      outputDir = sysPath.join outputDir, notebook.name.replace('/', ':')
       fs.mkdirSync outputDir unless fs.existsSync(outputDir)
 
       files = fs.readdirSync(dir)
