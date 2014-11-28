@@ -41,7 +41,7 @@ exportAsHTML = (path, outputDir) ->
 
   switch sysPath.extname(dir)
     when '.qvnotebook'
-      notebook = JSON.parse(fs.readFileSync(sysPath.join(dir, 'content.json')))
+      notebook = JSON.parse(fs.readFileSync(sysPath.join(dir, 'meta.json')))
       outputDir = sysPath.join outputDir, notebook.name.replace('/', ':')
       fs.mkdirSync outputDir unless fs.existsSync(outputDir)
 
