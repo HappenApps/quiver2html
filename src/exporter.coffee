@@ -1,6 +1,6 @@
 fs = require 'fs-extra'
 sysPath = require 'path'
-marked = require 'marked'
+kramed = require 'kramed'
 
 TEMPLATE_DIR = sysPath.join(__dirname, 'template')
 HTML_TEMPLATE_FILE = sysPath.join(TEMPLATE_DIR, 'index.html')
@@ -21,7 +21,7 @@ exportNoteAsHTML = (noteDir, outputDir) ->
       when 'code'
         s += "<pre class='cell code-cell'><code>#{htmlEscape(c.data)}</code></pre>"
       when 'markdown'
-        s += "<div class='cell markdown-cell'>#{marked(c.data)}</div>"
+        s += "<div class='cell markdown-cell'>#{kramed(c.data)}</div>"
       when 'latex'
         s += "<div class='cell latex-cell'>#{c.data}</div>"
   html = HTML_TEMPLATE.replace('{{title}}', title).replace('{{content}}', s)
