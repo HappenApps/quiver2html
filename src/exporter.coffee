@@ -21,7 +21,7 @@ exportNoteAsHTML = (noteDir, outputDir) ->
       when 'code'
         s += "<pre class='cell code-cell'><code>#{htmlEscape(c.data)}</code></pre>"
       when 'markdown'
-        s += "<div class='cell markdown-cell'>#{marked(c.data)}</div>"
+        s += "<div class='cell markdown-cell'>#{marked(c.data.replace(/quiver-image-url/gi, 'resources'))}</div>"
       when 'latex'
         s += "<div class='cell latex-cell'>#{c.data}</div>"
   html = HTML_TEMPLATE.replace('{{title}}', title).replace('{{content}}', s)
